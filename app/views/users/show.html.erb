@@ -1,0 +1,22 @@
+<h1><%= @user.first_name %>'s Playlist</h1>
+
+<a href="/songs">Dashboard</a>
+
+<table style="border: 1px solid black;border-collapse: collapse; padding: 8px">
+	<thead>
+		<tr>
+			<td style="border: 1px solid black;border-collapse: collapse; padding: 8px">Artist</td>
+			<td style="border: 1px solid black;border-collapse: collapse; padding: 8px">Title</td>
+			<td style="border: 1px solid black;border-collapse: collapse; padding: 8px">No of times song has been added</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user|  %>
+			<tr>
+				<td style="border: 1px solid black;border-collapse: collapse;padding: 8px"><%= user.artist %></td>
+				<td style="border: 1px solid black;border-collapse: collapse;padding: 8px"><%= user.title %></a></td>
+				<td style="border: 1px solid black;border-collapse: collapse;padding: 8px"><%= @count %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

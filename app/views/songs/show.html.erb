@@ -1,0 +1,21 @@
+
+<h1>others who added <%= @song.artist%> - <%= @song.title %></h1>
+
+<a href="/songs">Dashboard</a>
+
+<table style="border: 1px solid black;border-collapse: collapse; padding: 8px">
+	<thead>
+		<tr>
+			<td style="border: 1px solid black;border-collapse: collapse; padding: 8px">Name</td>
+			<td style="border: 1px solid black;border-collapse: collapse; padding: 8px">No of times added</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td style="border: 1px solid black;border-collapse: collapse;padding: 8px"><a href="/users/<%= user.id %>"><%= user.first_name %></a></td>
+				<td style="border: 1px solid black;border-collapse: collapse;padding: 8px"><%= @count %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

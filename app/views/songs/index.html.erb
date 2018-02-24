@@ -1,0 +1,43 @@
+<h1>Hello , <%= current_user.first_name.capitalize %>!</h1>
+
+
+
+<table style="border: 1px solid black;border-collapse: collapse; padding: 8px">
+	<thead>
+		<tr>
+			<td style="border: 1px solid black;border-collapse: collapse; padding: 8px">Artist</td>
+			<td style="border: 1px solid black;border-collapse: collapse; padding: 8px">Title</td>
+			<td style="border: 1px solid black;border-collapse: collapse; padding: 8px">No of times song has been added</td>
+			<td style="border: 1px solid black;border-collapse: collapse; padding: 8px">Add to playlist</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @songs.each do |song|  %>
+			<tr>
+				<td style="border: 1px solid black;border-collapse: collapse;padding: 8px"><%= song.artist %></td>
+				<td style="border: 1px solid black;border-collapse: collapse;padding: 8px"><a href="/songs/<%= song.id %>"><%= song.title %></a></td>
+				<td style="border: 1px solid black;border-collapse: collapse;padding: 8px"><%= @count %></td>
+				<td style="border: 1px solid black;border-collapse: collapse;padding: 8px;">
+					<form action="/songs/add" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<input type="hidden" name="song_id" value="<%= song.id %>">
+						<button type="submit" value="add"> Add</button>
+					</form>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<h4>Add a song</h4>
+<form action="/songs" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	<label for="artist">Artist:</label>
+	<input type="artist" name="artist" id="artist">
+
+	<label for="title">Title: </label>
+	<input type="text" name="title" id="title">
+
+	<button type="submit">Add Song</button>
+</form>
